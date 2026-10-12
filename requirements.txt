@@ -1,10 +1,4 @@
 # Review Organizer — serving requirements (Streamlit Cloud build).
-# Deliberately slim: only what app.py + src/ import at runtime. The
-# notebook-only stack (clustering/LDA/EDA) is commented out at the bottom;
-# install it locally with `pip install -r requirements-dev.txt` style.
-#
-# torch comes from the CPU wheel index. torch>=2.9 because Streamlit Cloud
-# runs Python 3.14 and PyTorch publishes cp314 wheels only from 2.9.
 pandas>=2.0
 numpy>=2.0
 scipy>=1.11
@@ -19,18 +13,3 @@ sentence-transformers>=2.2
 google-play-scraper>=1.2
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.9.1+cpu
-
-# --------------------------------------------------------------------------
-# Notebook-only (01–04); NOT installed on Streamlit Cloud on purpose:
-#   - gensim/pyLDAvis: sdist fails to build on Python 3.14 (see README)
-#   - jupyterlab/spacy/wordcloud/seaborn/umap-learn/transformers: heavy or
-#     unused by the serving path
-# Install locally when you need to re-run notebooks 01–03:
-#   spacy>=3.7
-#   transformers>=4.35
-#   seaborn>=0.13
-#   umap-learn>=0.5
-#   wordcloud>=1.9
-#   jupyterlab>=4.0
-#   gensim>=4.3        # on Python 3.14 build from git tag, see README
-#   pyLDAvis>=2.4
