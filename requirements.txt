@@ -1,0 +1,35 @@
+# Review Organizer — pinned to a compatible CPU-only stack (Python 3.10+)
+# Install torch from the CPU wheel index first, or pip resolves the default
+# CUDA build and pulls several GB of nvidia-*-cu12 runtime wheels:
+#   pip install --index-url https://download.pytorch.org/whl/cpu torch
+# numpy 1.26.4 has no cp314 wheel, so Python 3.14 requires numpy>=2.
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+nltk>=3.8
+spacy>=3.7            # optional alternative to nltk (lemmatization)
+sentence-transformers>=2.2
+transformers>=4.35    # only needed for the optional DistilBERT notebook
+matplotlib>=3.7
+seaborn>=0.13
+joblib>=1.3
+streamlit>=1.30
+plotly>=5.18          # Streamlit pie chart
+google-play-scraper>=1.2
+umap-learn>=0.5       # optional, falls back to PCA if not installed
+wordcloud>=1.9
+scipy>=1.11
+jupyterlab>=4.0       # notebooks/ — `jupyter lab` is only on PATH once the venv is activated
+# Topic modeling comparison (LDA + c_v coherence)
+# On Python 3.14: PyPI publishes gensim wheels for cp39-cp313 only, and the
+# sdist's pre-generated Cython C no longer compiles there (PyLongObject opaque).
+# Build from the git tag instead — the checkout has .pyx sources, so setup.py
+# regenerates the extensions with Cython>=3.3:
+#   git clone --depth 1 -b 4.4.0 https://github.com/RaRe-Technologies/gensim.git
+#   pip install ./gensim
+gensim>=4.3
+pyLDAvis>=2.4
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+# BERTopic is heavy on 8GB RAM; install only if you want it:
+# bertopic>=0.16

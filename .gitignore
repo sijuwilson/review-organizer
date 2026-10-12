@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large / private datasets — keep CSVs out of git, download locally
+data/raw/*.csv
+data/raw/*.xlsx
+
+# Generated artifacts not needed for serving
+data/processed/figures/
+
+# Logs
+*.log
